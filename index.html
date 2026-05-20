@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AF Design & Construction — Todos Santos, Baja California Sur</title>
+<meta name="description" content="AF Design & Construction. Crafting homes in Baja California Sur since 2001. Turn-key residential design and construction in Todos Santos and Pescadero.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --af-blue: #29ABE2;
+    --af-gray: #8C9198;
+    --af-dark: #1a1a18;
+    --af-sand: #f5f0e8;
+    --af-cream: #faf8f4;
+    --af-stone: #d6cfc2;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--af-cream);
+    color: var(--af-dark);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--af-stone);
+  }
+
+  .nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--af-gray);
+    letter-spacing: 0.08em;
+  }
+
+  .nav-logo span { color: var(--af-blue); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--af-gray);
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--af-blue); }
+
+  .nav-cta {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase;
+    color: var(--af-blue) !important;
+    border: 0.5px solid var(--af-blue);
+    padding: 0.5rem 1.25rem;
+    transition: all 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--af-blue) !important;
+    color: white !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--af-blue);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 0.5px;
+    background: var(--af-blue);
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--af-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--af-gray);
+  }
+
+  .hero-tagline {
+    font-size: 0.9rem;
+    color: var(--af-gray);
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+    max-width: 400px;
+    border-left: 2px solid var(--af-blue);
+    padding-left: 1.25rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--af-dark);
+    color: white;
+    padding: 1rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--af-blue); }
+
+  .btn-ghost {
+    color: var(--af-gray);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--af-blue); }
+  .btn-ghost::after { content: '→'; font-size: 1rem; }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 3rem;
+  }
+
+  .hero-img-label {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-stat-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--af-dark);
+    display: flex;
+    padding: 1.5rem 4rem;
+    gap: 4rem;
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 0.25rem; }
+
+  .stat-number {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--af-gray);
+  }
+
+  .stat-divider {
+    width: 0.5px;
+    background: rgba(255,255,255,0.1);
+    align-self: stretch;
+  }
+
+  /* SECTIONS */
+  .section { padding: 7rem 4rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--af-blue);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    flex: 1;
+    max-width: 40px;
+    height: 0.5px;
+    background: var(--af-blue);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+
+  .about-title em { font-style: italic; color: var(--af-gray); }
+
+  .about-body {
+    font-size: 0.95rem;
+    color: #5a5a55;
+    margin-bottom: 1.5rem;
+    line-height: 1.85;
+  }
+
+  .about-values {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .value-item { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .value-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--af-blue);
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+  }
+
+  .value-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--af-dark);
+    font-weight: 500;
+  }
+
+  .about-image-wrap { position: relative; }
+
+  .about-img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+  }
+
+  .about-accent {
+    position: absolute;
+    top: -1.5rem;
+    right: -1.5rem;
+    width: 120px;
+    height: 120px;
+    border: 0.5px solid var(--af-blue);
+    z-index: -1;
+  }
+
+  /* SERVICES */
+  .services { background: var(--af-dark); padding: 7rem 4rem; }
+
+  .services-label { color: rgba(255,255,255,0.3); }
+  .services-label::after { background: rgba(255,255,255,0.15); }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .services-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .services-title em { color: var(--af-gray); font-style: italic; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .service-card {
+    background: var(--af-dark);
+    padding: 3rem 2.5rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .service-card:hover { border-bottom-color: var(--af-blue); }
+
+  .service-num {
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    color: var(--af-blue);
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .service-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+  }
+
+  /* PORTFOLIO */
+  .portfolio { padding: 7rem 4rem; background: var(--af-sand); }
+
+  .portfolio-header {
+    margin-bottom: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .portfolio-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .portfolio-title em { font-style: italic; color: var(--af-gray); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+  }
+
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .portfolio-item:first-child { grid-row: span 2; }
+
+  .port-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    transition: transform 0.6s ease;
+  }
+
+  .portfolio-item:first-child .port-placeholder { aspect-ratio: 3/4; }
+  .port-placeholder-sm { aspect-ratio: 4/3; }
+
+  .portfolio-item:hover .port-placeholder { transform: scale(1.04); }
+
+  .port-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+    padding: 2rem 1.5rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .portfolio-item:hover .port-info { transform: translateY(0); }
+
+  .port-name {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 300;
+  }
+
+  .port-type {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--af-blue);
+  }
+
+  /* PROCESS */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  .process-step { position: relative; }
+
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 1.2rem;
+    right: -1.5rem;
+    width: 3rem;
+    height: 0.5px;
+    background: var(--af-stone);
+  }
+
+  .step-num {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--af-stone);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .step-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--af-dark);
+  }
+
+  .step-desc {
+    font-size: 0.82rem;
+    color: var(--af-gray);
+    line-height: 1.8;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--af-sand); padding: 7rem 4rem; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 2.5rem;
+    border-left: 2px solid var(--af-blue);
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--af-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--af-gray);
+  }
+
+  /* CONTACT */
+  .contact { background: var(--af-dark); padding: 7rem 4rem; }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-title em { font-style: italic; color: var(--af-gray); }
+
+  .contact-sub {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-item:hover { color: var(--af-blue); }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border: 0.5px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--af-blue);
+    flex-shrink: 0;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .form-input {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 0.9rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-input:focus { border-color: var(--af-blue); }
+  .form-input::placeholder { color: rgba(255,255,255,0.2); }
+
+  textarea.form-input { resize: vertical; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .submit-btn {
+    background: var(--af-blue);
+    color: white;
+    border: none;
+    padding: 1.1rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  .submit-btn:hover { background: #1a8bbf; }
+
+  /* FOOTER */
+  footer {
+    background: #0f0f0d;
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.12em;
+  }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-social { display: flex; gap: 1.5rem; }
+
+  .footer-social a {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-social a:hover { color: var(--af-blue); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 2rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 4rem 2rem 2rem; }
+    .hero-right { min-height: 60vw; }
+    .hero-stat-bar { padding: 1.25rem 2rem; gap: 1.5rem; flex-wrap: wrap; position: static; }
+    .section { padding: 5rem 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .services { padding: 5rem 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .portfolio { padding: 5rem 2rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-item:first-child { grid-row: span 1; }
+    .process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .process-step::after { display: none; }
+    .testimonials { padding: 5rem 2rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact { padding: 5rem 2rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AF <span>·</span> Design & Construction</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Todos Santos · Baja California Sur</p>
+    <h1 class="hero-title">
+      Crafting homes<br>
+      in <em>Baja California Sur</em><br>
+      since 2001.
+    </h1>
+    <p class="hero-tagline">
+      Local expertise. Turn-key delivery. Exceptional attention to detail — from the first sketch to the moment you receive your keys.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">View Our Work</a>
+      <a href="#contact" class="btn-ghost">Start a Project</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-placeholder" style="background: linear-gradient(160deg, #c4b8a8 0%, #968370 35%, #6e5e50 70%, #3d3028 100%); height: 100%;">
+      <!-- REPLACE: <img src="images/casa-julia-hero.jpg" alt="Casa Julia, Las Tunas" style="width:100%;height:100%;object-fit:cover;"> -->
+      <p class="hero-img-label">Casa Julia, Las Tunas</p>
+    </div>
+  </div>
+  <div class="hero-stat-bar">
+    <div class="stat">
+      <span class="stat-number">23+</span>
+      <span class="stat-label">Years in Baja</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Turn-Key Delivery</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-number">On Time.</span>
+      <span class="stat-label">Every Project</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-number">BCS</span>
+      <span class="stat-label">Todos Santos · Pescadero</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">About AF</p>
+      <h2 class="about-title">A local firm with over<br>two decades of<br><em>Baja roots.</em></h2>
+      <p class="about-body">
+        AF Design & Construction was built from the ground up in Todos Santos. For over 23 years, we have delivered residential projects that honor the beauty of Baja California Sur — its light, its landscape, and its pace of life.
+      </p>
+      <p class="about-body">
+        We work with a small, dedicated team of architects, engineers, and craftspeople. Every project receives our full attention — from initial design through final handover. No shortcuts. No surprises.
+      </p>
+      <div class="about-values">
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <span class="value-label">Quality</span>
+        </div>
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <span class="value-label">Trust</span>
+        </div>
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <span class="value-label">Detail</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-image-wrap">
+      <div class="about-img-placeholder" style="background: linear-gradient(150deg, #b0a394 0%, #7d6e60 100%);">
+        <!-- REPLACE: <img src="images/about-af.jpg" alt="AF Design & Construction team" style="width:100%;height:100%;object-fit:cover;"> -->
+      </div>
+      <div class="about-accent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label services-label">What We Do</p>
+  <div class="services-header">
+    <h2 class="services-title">Complete homes,<br><em>fully realized.</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <h3 class="service-title">Architectural Design</h3>
+      <p class="service-desc">From concept to construction documents, we develop designs that respond to Baja's climate, terrain, and light — creating spaces that feel as natural as their surroundings.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <h3 class="service-title">Construction</h3>
+      <p class="service-desc">We self-perform critical phases of every build with our trusted local team. Quality control, material sourcing, and scheduling — all managed by us, so you don't have to.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <h3 class="service-title">Turn-Key Homes</h3>
+      <p class="service-desc">One point of contact. One contract. One finished home — ready to live in the moment you arrive. Ideal for vacation homes, retirement properties, and remote buyers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <p class="section-label">Selected Work</p>
+      <h2 class="portfolio-title">Projects we're<br><em>proud to stand behind.</em></h2>
+    </div>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <div class="port-placeholder" style="background: linear-gradient(170deg, #c2b5a4 0%, #7d6e5e 100%); aspect-ratio: 3/4;">
+        <!-- REPLACE: <img src="images/casa-julia-1.jpg" alt="Casa Julia" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"> -->
+      </div>
+      <div class="port-info">
+        <p class="port-type">Residential · Las Tunas</p>
+        <p class="port-name">Casa Julia</p>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="port-placeholder port-placeholder-sm" style="background: linear-gradient(145deg, #a8bdc5 0%, #5a7d86 100%);">
+        <!-- REPLACE: <img src="images/project-2.jpg" alt="Project 2" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"> -->
+      </div>
+      <div class="port-info">
+        <p class="port-type">Residential · Todos Santos</p>
+        <p class="port-name">Casa del Desierto</p>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="port-placeholder port-placeholder-sm" style="background: linear-gradient(135deg, #b5a98e 0%, #7a6d55 100%);">
+        <!-- REPLACE: <img src="images/project-3.jpg" alt="Project 3" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"> -->
+      </div>
+      <div class="port-info">
+        <p class="port-type">Residential · Pescadero</p>
+        <p class="port-name">Casa Pacífico</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <p class="section-label">How It Works</p>
+  <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 0;">Your home, <em style="font-style:italic; color: var(--af-gray);">from the first call<br>to the front door.</em></h2>
+  <div class="process-grid">
+    <div class="process-step">
+      <p class="step-num">01</p>
+      <h3 class="step-title">Initial Consultation</h3>
+      <p class="step-desc">We listen to your vision, visit the site, and understand your goals, timeline, and budget before any commitment is made.</p>
+    </div>
+    <div class="process-step">
+      <p class="step-num">02</p>
+      <h3 class="step-title">Design & Planning</h3>
+      <p class="step-desc">Our team develops architectural plans, renders, and full permit documentation — keeping you informed at every stage.</p>
+    </div>
+    <div class="process-step">
+      <p class="step-num">03</p>
+      <h3 class="step-title">Construction</h3>
+      <p class="step-desc">We build with precision, managing every subcontractor and material. Regular reports keep you in the loop even from afar.</p>
+    </div>
+    <div class="process-step">
+      <p class="step-num">04</p>
+      <h3 class="step-title">Turn-Key Delivery</h3>
+      <p class="step-desc">Your home is delivered complete, finished, and ready. We don't hand over a construction site — we hand over a home.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <p class="section-label">What Our Clients Say</p>
+  <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; margin-bottom: 0;">Words from those<br><em style="font-style:italic; color: var(--af-gray);">who live in our work.</em></h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"Building remotely in Baja felt daunting — but AF made it seamless. They kept us informed every step of the way, delivered on time, and the result exceeded every expectation."</p>
+      <p class="testimonial-author">— Client, Vacation Home · Todos Santos</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"What sets them apart is their attention to detail. Not one single thing was left unfinished. We came down to a home that was truly ready to live in."</p>
+      <p class="testimonial-author">— Client, Retirement Home · Pescadero</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="section-label" style="color: rgba(255,255,255,0.3);">Get in Touch</p>
+      <h2 class="contact-title">Let's build<br>something<br><em>remarkable.</em></h2>
+      <p class="contact-sub">Whether you're planning a vacation home, a retirement retreat, or a family residence in Baja California Sur — we'd love to hear from you.</p>
+      <div class="contact-details">
+        <a href="mailto:info@afdesignconstruction.com" class="contact-item">
+          <div class="contact-icon">✉</div>
+          info@afdesignconstruction.com
+        </a>
+        <a href="https://wa.me/52XXXXXXXXXX" class="contact-item">
+          <!-- UPDATE href with real WhatsApp number: https://wa.me/521XXXXXXXXXX -->
+          <div class="contact-icon">↗</div>
+          WhatsApp — Contact us directly
+        </a>
+        <div class="contact-item">
+          <div class="contact-icon">⌖</div>
+          Todos Santos · Pescadero, BCS, México
+        </div>
+        <div class="contact-item" style="gap: 1.5rem; margin-top: 0.5rem;">
+          <a href="https://www.instagram.com/afdesign_construction/" target="_blank" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;">Instagram</a>
+          <a href="https://www.facebook.com/AFDesignMX/" target="_blank" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;">Facebook</a>
+          <a href="https://mx.pinterest.com/afdesignmx/" target="_blank" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;">Pinterest</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
+        <!-- UPDATE: Replace Formspree endpoint or connect your own backend -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" name="first_name" placeholder="James" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" name="last_name" placeholder="Walker" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" name="email" placeholder="james@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Project Type</label>
+          <input class="form-input" type="text" name="project_type" placeholder="Vacation home · Retirement · Family residence">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell us about your project</label>
+          <textarea class="form-input" name="message" rows="4" placeholder="Location, size, timeline, budget range..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AF Design & Construction</div>
+  <p class="footer-copy">© 2025 AF Design & Construction · Todos Santos, BCS, México</p>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/afdesign_construction/" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/AFDesignMX/" target="_blank">Facebook</a>
+    <a href="https://mx.pinterest.com/afdesignmx/" target="_blank">Pinterest</a>
+  </div>
+</footer>
+
+</body>
+</html>

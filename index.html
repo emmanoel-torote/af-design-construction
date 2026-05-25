@@ -32,8 +32,8 @@
 
   .hero { min-height: 100vh; display: grid; grid-template-rows: 1fr auto; padding-top: 72px; }
   .hero-canvas { position: relative; overflow: hidden; background: #e8e4de; display: flex; align-items: flex-end; }
-  .hero-img { position: absolute; inset: 0; background: linear-gradient(180deg,#d8d0c4 0%,#a89a89 60%,#7a6d60 100%); }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); }  .hero-caption { position: relative; z-index: 2; padding: 5vw; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 60%, transparent 100%); }
+  .hero-caption { position: relative; z-index: 2; padding: 5vw; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; }
   .hero-caption-left { max-width: 580px; }
   .hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
   .hero-title { font-family: var(--serif); font-size: clamp(2.8rem,5.5vw,5rem); font-weight: 300; color: #fff; line-height: 1.05; }
@@ -61,8 +61,7 @@
   .val-text { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dark); }
 
   .full-photo { width: 100%; aspect-ratio: 21/9; background: #ddd8d0; overflow: hidden; position: relative; }
-  .full-photo-inner { position: absolute; inset: 0; background: linear-gradient(135deg,#c8bfb0 0%,#9e9181 50%,#7a6d5f 100%); }
-  .full-photo-label { position: absolute; bottom: 2rem; right: 2.5rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .full-photo-label { position: absolute; bottom: 2rem; right: 2.5rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); z-index: 2; }
 
   .services { padding: 9vw 5vw; }
   .services-head { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; align-items: end; margin-bottom: 5vw; padding-bottom: 3rem; border-bottom: 0.5px solid var(--rule); }
@@ -81,7 +80,7 @@
   .portfolio-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1px; background: var(--rule); }
   .port-item { position: relative; overflow: hidden; background: #e8e4de; cursor: pointer; }
   .port-item:first-child { grid-row: span 2; }
-  .port-fill { width: 100%; height: 100%; display: block; transition: transform 0.7s cubic-bezier(.22,.68,0,1.2); }
+  .port-fill { width: 100%; height: 100%; display: block; transition: transform 0.7s cubic-bezier(.22,.68,0,1.2); object-fit: cover; }
   .port-item:first-child .port-fill { aspect-ratio: 4/5; }
   .port-fill-sm { aspect-ratio: 3/2; }
   .port-item:hover .port-fill { transform: scale(1.04); }
@@ -91,7 +90,6 @@
   .port-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 300; color: #fff; }
 
   .photo-break { width: 100%; aspect-ratio: 16/7; background: #d5cfc6; position: relative; overflow: hidden; margin: 1px 0; }
-  .photo-break-inner { position: absolute; inset: 0; background: linear-gradient(160deg,#c4b8a8 0%,#8a7d6e 100%); }
 
   .process { padding: 9vw 5vw; }
   .process-head { margin-bottom: 5vw; padding-bottom: 3rem; border-bottom: 0.5px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; align-items: end; }
@@ -213,8 +211,7 @@
 
 <!-- FULL PHOTO BREAK 1 -->
 <div class="full-photo">
-  <div class="full-photo-inner"></div>
-  <!-- REPLACE: <img src="images/casa-pericu-panoramic.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"> -->
+  <img src="images/casa-pericu-panoramic.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
   <span class="full-photo-label">Casa Pericú &nbsp;·&nbsp; Las Tunas</span>
 </div>
 
@@ -254,25 +251,19 @@
   </div>
   <div class="portfolio-grid">
     <div class="port-item">
-      <div class="port-fill" style="background:linear-gradient(170deg,#c4b8a8 0%,#8a7a6a 100%);aspect-ratio:4/5;">
-        <!-- REPLACE: <img src="images/casa-pericu-main.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
-      </div>
+      <img src="images/casa-pericu-main.jpg" class="port-fill" style="aspect-ratio:4/5;">
       <div class="port-overlay">
-        <div><p class="port-type">Residential &nbsp;·&nbsp; Las Tunas</p><p class="port-name">Casa Pericu</p></div>
+        <div><p class="port-type">Residential &nbsp;·&nbsp; Las Tunas</p><p class="port-name">Casa Pericú</p></div>
       </div>
     </div>
     <div class="port-item">
-      <div class="port-fill port-fill-sm" style="background:linear-gradient(145deg,#b8c8cc 0%,#6a8e96 100%);">
-        <!-- REPLACE: <img src="images/project-2.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
-      </div>
+      <img src="images/project-2.jpg" class="port-fill port-fill-sm">
       <div class="port-overlay">
         <div><p class="port-type">Residential &nbsp;·&nbsp; Todos Santos</p><p class="port-name">Casa del Desierto</p></div>
       </div>
     </div>
     <div class="port-item">
-      <div class="port-fill port-fill-sm" style="background:linear-gradient(135deg,#c0b49a 0%,#8a7d65 100%);">
-        <!-- REPLACE: <img src="images/project-3.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
-      </div>
+      <img src="images/project-3.jpg" class="port-fill port-fill-sm">
       <div class="port-overlay">
         <div><p class="port-type">Residential &nbsp;·&nbsp; Pescadero</p><p class="port-name">Casa Pacífico</p></div>
       </div>
@@ -282,8 +273,7 @@
 
 <!-- PHOTO BREAK 2 -->
 <div class="photo-break">
-  <div class="photo-break-inner"></div>
-  <!-- REPLACE: <img src="images/break-2.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"> -->
+  <img src="images/break-2.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
 </div>
 
 <!-- PROCESS -->
@@ -327,7 +317,6 @@
         <div class="contact-icon">✉</div>info@afdesignconstruction.com
       </a>
       <a href="https://wa.me/52XXXXXXXXXX" class="contact-item">
-        <!-- UPDATE: replace number -->
         <div class="contact-icon">↗</div>WhatsApp — Contact us directly
       </a>
       <div class="contact-item" style="cursor:default;">
@@ -342,7 +331,6 @@
   </div>
   <div>
     <form action="https://formspree.io/f/XXXXXXXX" method="POST">
-      <!-- UPDATE: Formspree endpoint -->
       <div class="f-row">
         <div class="f-group"><label class="f-label">First Name</label><input class="f-input" type="text" name="first_name" placeholder="James" required></div>
         <div class="f-group"><label class="f-label">Last Name</label><input class="f-input" type="text" name="last_name" placeholder="Walker" required></div>

@@ -22,7 +22,8 @@
   html { scroll-behavior: smooth; margin: 0; padding: 0; }
   body { font-family: var(--sans); background: #fff; color: var(--dark); font-weight: 300; line-height: 1.7; overflow-x: hidden; margin-top: 0; padding-top: 0; }
 
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5vw; background: rgba(255,255,255,0.98); backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--rule); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5vw; background: transparent; border-bottom: 0.5px solid transparent; transition: background 0.45s ease, border-color 0.45s ease; }
+  nav.scrolled { background: rgba(255,255,255,0.98); backdrop-filter: blur(16px); border-bottom: 1px solid var(--rule); }
   .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--gray); letter-spacing: 0.14em; text-transform: uppercase; transition: filter 0.4s ease; }
   nav:not(.scrolled) .nav-logo { filter: brightness(0) invert(1); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }

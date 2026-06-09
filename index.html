@@ -87,8 +87,8 @@
   .services-display { font-size: clamp(2.2rem,4vw,3.6rem); }
   .services-intro { font-size: 0.88rem; color: var(--charcoal); line-height: 1.9; align-self: end; font-weight: 300; }
   .services-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 0.5px solid var(--rule); }
-  .svc { padding: 2.5rem 2.5rem 2.5rem 0; border-right: 0.5px solid var(--rule); }
-  .svc:last-child { border-right: none; padding-right: 0; }
+  .svc { padding: 2.5rem 2rem 2.5rem 0; border-right: 0.5px solid var(--rule); min-width: 0; }
+  .svc:last-child { border-right: none; padding-right: 0; overflow: hidden; }
   .svc-num { font-family: var(--serif); font-size: 0.75rem; color: var(--navy-mid); letter-spacing: 0.15em; margin-bottom: 1.5rem; display: block; }
   .svc-title { font-family: var(--serif); font-size: 1.45rem; font-weight: 300; color: var(--navy); margin-bottom: 0.85rem; line-height: 1.2; }
   .svc-desc { font-size: 0.8rem; color: var(--charcoal); line-height: 1.9; font-weight: 300; }
@@ -256,8 +256,8 @@
   .process-head { margin-bottom: 5vw; padding-bottom: 3rem; border-bottom: 0.5px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; align-items: end; }
   .process-display { font-size: clamp(2.2rem,4vw,3.6rem); }
   .process-steps { display: grid; grid-template-columns: repeat(4,1fr); border-top: 0.5px solid var(--rule); }
-  .step { padding: 2.5rem 2rem 2.5rem 0; border-right: 0.5px solid var(--rule); }
-  .step:last-child { border-right: none; }
+  .step { padding: 2.5rem 1.5rem 2.5rem 0; border-right: 0.5px solid var(--rule); min-width: 0; }
+  .step:last-child { border-right: none; padding-right: 0; }
   .step-n { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--blue-xlt); line-height: 1; margin-bottom: 1rem; }
   .step-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--navy); margin-bottom: 0.6rem; }
   .step-desc { font-size: 0.78rem; color: var(--charcoal); line-height: 1.9; font-weight: 300; }
@@ -526,7 +526,7 @@
     <p class="contact-sub">Whether you're planning a vacation home, a retirement retreat, or a family residence in Baja California Sur — we'd love to hear from you.</p>
     <div class="contact-items">
       <a href="mailto:info@afdesignconstruction.com" class="contact-item"><div class="contact-icon">✉</div>info@afdesignconstruction.com</a>
-      <a href="https://wa.me/52XXXXXXXXXX" class="contact-item"><div class="contact-icon">↗</div>WhatsApp — Contact us directly</a>
+      <a href="https://wa.me/526121402074" class="contact-item"><div class="contact-icon">↗</div>+52 612 140 2074</a>
       <div class="contact-item" style="cursor:default;"><div class="contact-icon">⌖</div>Todos Santos · Pescadero, BCS, México</div>
     </div>
     <div class="social-links">
@@ -536,7 +536,10 @@
     </div>
   </div>
   <div>
-    <form action="https://formspree.io/f/XXXXXXXX" method="POST">
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="8cfddd27-2935-433d-b615-4261c0628fb1">
+      <input type="hidden" name="subject" value="New inquiry from AF Design & Construction website">
+      <input type="hidden" name="redirect" value="false">
       <div class="f-row">
         <div class="f-group"><label class="f-label">First Name</label><input class="f-input" type="text" name="first_name" placeholder="James" required></div>
         <div class="f-group"><label class="f-label">Last Name</label><input class="f-input" type="text" name="last_name" placeholder="Walker" required></div>
